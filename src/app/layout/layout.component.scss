@@ -1,0 +1,33 @@
+.header {
+  border-bottom: 1px solid #887bff;
+  padding: 10px 0px;
+
+
+  .logo {
+    margin-right: 50px;
+    img {
+      height: 50px;
+    }
+  }
+
+  .nav-link {
+    font-size: 20px;
+
+    &:hover {
+      background-color: lightgray;
+    }
+  }
+
+}
+  
+.footer {
+  border-top: 1px solid #887bff;
+
+  .img-fr {
+    height: 60px;
+  }
+
+  .img-dd {
+    height: 80px;
+  }
+}

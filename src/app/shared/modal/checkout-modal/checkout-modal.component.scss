@@ -1,0 +1,86 @@
+.wrapper {
+
+  .top {
+    padding: 20px 25px;
+    background-color: #4b4b4b;
+    color: white;
+
+    .title {
+      font-weight: bold;
+    }
+  }
+
+  .content {
+    padding: 15px;
+
+    .resolution {
+      margin-bottom: 15px;
+      
+      .question {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 20px;
+      }
+    }
+
+    .form-group {
+      label {
+        margin-bottom: 0;
+        text-transform: uppercase;
+        color: #9c9c9c;
+      }
+
+      input {
+        border-radius: 0;
+        font-weight: bold;
+
+        &:focus {
+          outline: none;
+          box-shadow: none;
+        }
+      }
+    }
+
+    .btn-wrapper {
+      margin-bottom: 10px;
+
+      button {
+        background-color: #25ae8a;
+        font-size: 14px;
+        padding: 10px 30px;
+        border-radius: 25px;
+        border: none;
+        color: white;
+        text-transform: uppercase;
+  
+    
+        &:hover {
+          background-color: #3ac28c;
+        }
+    
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}
+
+.close-wrapper {
+  position: absolute;
+  bottom: -40px;
+  right: 0;
+  color: #650000;
+  line-height: 40px;
+  cursor: pointer;
+
+  .text {
+    vertical-align: middle;
+  }
+
+  img {
+    width: 20px;
+    vertical-align: middle;
+  }
+}
+

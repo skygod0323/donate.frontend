@@ -1,0 +1,48 @@
+<div class="wrapper">
+  <div class="top text-center">
+    <h3 class="title">You are so close!</h3>
+    <p class="notice">Fill out your name and email and we will send you a download link.</p>
+  </div>
+
+  <div class="content">
+    <form [formGroup]="form">
+      <div class="resolution">
+        <p class="question">How do you want your images?</p>
+        <mat-radio-group aria-label="Select an option" formControlName="resolution">
+          <mat-radio-button value="high" class="mr-5">HIGH RES</mat-radio-button>
+          <mat-radio-button value="low">LOW RES</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <div class="form-group" [ngClass]="validate.displayFieldCss(form, 'firstname')">
+        <label>first name</label>
+        <input class="form-control text-uppercase" formControlName="firstname" name="firstname">
+        <!-- <span class="error">First name is required</span> -->
+      </div>
+
+      <div class="form-group" [ngClass]="validate.displayFieldCss(form, 'lastname')">
+        <label>last name</label>
+        <input class="form-control text-uppercase" formControlName="lastname" name="lastname">
+        <!-- <span class="error">Last name is required</span> -->
+      </div>
+
+      <div class="form-group" [ngClass]="validate.displayFieldCss(form, 'email')">
+        <label>email</label>
+        <input class="form-control" formControlName="email" name="email" type="email">
+        <!-- <span class="error">Email is required</span> -->
+      </div>
+
+      <div class="btn-wrapper text-center">
+        <button class="" (click)="apply()">DOWNLOAD</button>
+        <!-- <button class="btn btn-danger" (click)="cancel()">CNACEL</button> -->
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="close-wrapper text-right" (click)="cancel()">
+  <span class="icon d-inline-block mr-1">
+    <img src="../../../assets/image/clear-selection.png">
+  </span>
+  <span class="text">Close</span>
+</div>

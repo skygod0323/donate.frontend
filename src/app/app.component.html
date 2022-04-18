@@ -1,0 +1,18 @@
+<!-- <main>
+<app-navbar></app-navbar>  -->
+<mat-progress-bar mode="indeterminate" *ngIf="setting.loading">
+</mat-progress-bar>
+<!-- <p-growl></p-growl> -->
+<p-toast key="success"></p-toast>
+<p-toast key="error">
+  <ng-template let-message pTemplate="message">
+    <div class="error-message d-inline-block">
+      <!-- <span class="icon d-inline-block mr-1">
+        <img src="../assets/image/white-clear-selection.png" (click)="onReject()">
+      </span> -->
+      <span class="text">{{message.summary}}</span>
+    </div>
+  </ng-template>
+</p-toast>
+<router-outlet></router-outlet>
+<!-- </main> -->
