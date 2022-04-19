@@ -24,6 +24,7 @@ export class DonatePageComponent implements OnInit {
 
   public donate_type = 'single';
   public amount = 500;
+  public amount_type = 'fix'
 
   constructor(
     private _fb: FormBuilder,
@@ -53,7 +54,7 @@ export class DonatePageComponent implements OnInit {
     })
 
     this.billingForm = this._fb.group({
-      company: ['', Validators.required],
+      company: [''],
       house: ['', Validators.required],
       apartment: [''],
       city: ['', Validators.required],
@@ -128,6 +129,7 @@ export class DonatePageComponent implements OnInit {
 
 
   changeDonateType(type: any) {
+    this.amount_type = 'fix';
     if (type == 'single') {
       this.amount = 500;
     } else {
@@ -138,15 +140,22 @@ export class DonatePageComponent implements OnInit {
   }
 
   changeMontlyAmount(amount: number) {
+    this.amount_type = 'fix';
     this.amount = amount;
   }
 
   changeSingleAmount(amount: number) {
+    this.amount_type = 'fix';
     this.amount = amount;
   }
 
   handleChangeAmount(amount: any) {
     this.amount = amount
+  }
+
+  changeToOther() {
+    this.amount_type = 'other';
+    this.amount = 0;
   }
 
   getGIftAidText() {

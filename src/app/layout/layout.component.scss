@@ -1,30 +1,33 @@
 .header {
-  border-bottom: 1px solid #887bff;
-  padding: 10px 0px;
+  -webkit-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  -moz-box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  height: 80px;
 
 
   .logo {
     margin-right: 50px;
     img {
-      height: 50px;
+      height: 80px;
     }
   }
 
-  .nav-link {
-    font-size: 20px;
+  .btn-donate {
+    height: 80px;
+  }
 
-    &:hover {
-      background-color: lightgray;
-    }
+  .btn-crypto {
+    height: 80px;
+    border-radius: 0;
   }
 
 }
   
 .footer {
-  border-top: 1px solid #887bff;
+  
 
   .img-fr {
-    height: 60px;
+    height: 100px;
   }
 
   .img-dd {
