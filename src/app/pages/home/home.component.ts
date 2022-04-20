@@ -9,13 +9,29 @@ import { NotifyService } from 'src/app/services/notify.service';
 })
 export class HomePageComponent implements OnInit {
 
+  public summary = {total_amount: 0, count: 0}
+
   constructor(
     public api: Api,
     public notify: NotifyService,
   ) { }
 
   ngOnInit() {
-
+    // this.notify.showLoading()
+    this.api.donationSummary().subscribe((res: any) => {
+      // this.notify.hideLoading();
+      if (res.success) {
+        this.summary = {
+          total_amount: res.total_amount,
+          count: res.count
+        }
+      } else {
+        this.notify.showNotification('error', 'Unkown Error Occured');  
+      }
+    }, (error: any) => {
+      // this.notify.hideLoading();
+      this.notify.showNotification('error', 'Unkown Error Occured');
+    })
   }
 
   handleCryptoDonation() {
@@ -24,11 +40,11 @@ export class HomePageComponent implements OnInit {
     this.api.cryptoDonation().subscribe((res: any) => {
       this.notify.hideLoading();
       if (res.success) {
-        window.open(res.hosted_url);
+        location.href = res.hosted_url;
       } else {
         this.notify.showNotification('error', 'Unkown Error Occured');  
       }
-    }, error => {
+    }, (error: any) => {
       this.notify.hideLoading();
       this.notify.showNotification('error', 'Unkown Error Occured');
     })

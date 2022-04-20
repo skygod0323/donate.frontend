@@ -29,7 +29,7 @@ export class LayoutComponent implements OnInit {
     this.api.cryptoDonation().subscribe((res: any) => {
       this.notify.hideLoading();
       if (res.success) {
-        window.open(res.hosted_url);
+        location.href = res.hosted_url;
       } else {
         this.notify.showNotification('error', 'Unkown Error Occured');  
       }

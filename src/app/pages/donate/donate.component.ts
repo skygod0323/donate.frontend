@@ -46,10 +46,10 @@ export class DonatePageComponent implements OnInit {
       lastName: ['', Validators.required],
       email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
       phone: ['', Validators.required],
-      donorWall: [true],
+      donorWall: [false],
       donorWallName: [''],
-      getMail: [true],
-      getSMS: [true],
+      getMail: [false],
+      getSMS: [false],
       giftAdd: [false]
     })
 
@@ -133,7 +133,7 @@ export class DonatePageComponent implements OnInit {
     if (type == 'single') {
       this.amount = 500;
     } else {
-      this.amount = 50;
+      this.amount = 41.67;
     }
 
     this.donate_type = type;

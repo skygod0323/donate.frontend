@@ -13,3 +13,9 @@
         width: 40%;
     }
 }
+
+@media (max-width: 768px) { 
+    .option-wrapper button{
+        font-size: 9px;
+    }
+}

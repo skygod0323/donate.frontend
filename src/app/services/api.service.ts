@@ -13,4 +13,8 @@ export class Api extends BasicApi {
     cryptoDonation() {
         return this.get('/donation/cryptoDonation');
     }
+
+    donationSummary() {
+        return this.get('/donation/summary');
+    }
 }
