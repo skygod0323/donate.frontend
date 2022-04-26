@@ -11,6 +11,7 @@ import { SharedModule } from '../shared/shared.module';
 import { DonatePageComponent } from './donate/donate.component';
 import { NgxCcModule } from "ngx-cc";
 import { ThankyouPageComponent } from './thankyou/thankyou.component';
+import { DonorWallPageComponent } from './donorwall/donorwall.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { ThankyouPageComponent } from './thankyou/thankyou.component';
     HomePageComponent,
     AboutPageComponent,
     DonatePageComponent,
-    ThankyouPageComponent
+    ThankyouPageComponent,
+    DonorWallPageComponent
   ]
 })
 

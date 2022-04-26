@@ -24,18 +24,6 @@ export class LayoutComponent implements OnInit {
   }
 
   handleCryptoDonation() {
-
-    this.notify.showLoading()
-    this.api.cryptoDonation().subscribe((res: any) => {
-      this.notify.hideLoading();
-      if (res.success) {
-        location.href = res.hosted_url;
-      } else {
-        this.notify.showNotification('error', 'Unkown Error Occured');  
-      }
-    }, error => {
-      this.notify.hideLoading();
-      this.notify.showNotification('error', 'Unkown Error Occured');
-    })
+    location.href = 'https://commerce.coinbase.com/checkout/3654946a-1a66-474e-98e4-42ed7ed2f9e5';
   }
 }

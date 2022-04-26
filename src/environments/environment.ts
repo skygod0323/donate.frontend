@@ -5,6 +5,8 @@
 export const environment = {
   apiUrl: 'http://127.0.0.1:8000/api',
   serverUrl: 'http://127.0.0.1:8000',
+  frontUrl: 'http://localhost:4200',
+  stripeKey: 'pk_test_51K6GmbKwDFnlmwwft4dWp9jUhFAM2m099zuNq4tqZXuBf1Ll2Ub5yjY9BVDeCuEkocudXApsQPIzlXexbELxaWY100TG1KwYzg',
   production: false,
 };
 

@@ -6,6 +6,19 @@ import { BasicApi } from "./basicapi.service";
 
 @Injectable()
 export class Api extends BasicApi {
+
+    createPaymentIntent(data: any) {
+        return this.post('/donation/payment_intent', data);
+    }
+
+    confirmPaymentIntent(data: any) {
+        return this.post('/donation/confirm_payment_intent', data);
+    }
+
+    subscribeDonation(data: any) {
+        return this.post('/donation/subscribe_donation', data);
+    }
+
     donate(data: any) {
         return this.post('/donation/create', data);
     }
@@ -16,5 +29,9 @@ export class Api extends BasicApi {
 
     donationSummary() {
         return this.get('/donation/summary');
+    }
+
+    donorWall() {
+        return this.get('/donor_wall/donor_wall');
     }
 }

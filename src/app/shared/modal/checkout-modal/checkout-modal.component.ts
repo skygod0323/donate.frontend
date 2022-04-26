@@ -2,7 +2,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { Component, Inject, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Validate } from 'src/app/services/validate.service';
+import { environment } from '../../../../environments/environment';
 
+declare var Stripe: any;
+
+const stripe = Stripe(environment.stripeKey);
 
 @Component({
   selector: 'checkout-modal',
@@ -11,8 +15,7 @@ import { Validate } from 'src/app/services/validate.service';
 })
 export class CheckoutModalComponent implements OnInit {
 
-  form: FormGroup = null as any;
-  mode = '';
+  public elements: any;
 
   constructor(
     public dialogRef: MatDialogRef<CheckoutModalComponent>,
@@ -25,21 +28,50 @@ export class CheckoutModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.form = this.formBuilder.group({
-      resolution: ['high', Validators.required],
-      firstname: ['', Validators.required],
-      lastname: ['', Validators.required],
-      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
-    })
+    console.log(this.data);
+    const options = {
+		  clientSecret: this.data.client_secret,
+		  // Fully customizable with appearance API.
+		  appearance: {/*...*/},
+		};
+
+		// Set up Stripe.js and Elements to use in checkout form, passing the client secret obtained in step 2
+		this.elements = stripe.elements(options);
+
+		// Create and mount the Payment Element
+		const paymentElement = this.elements.create('payment');
+		paymentElement.mount('#payment-element');
+		
+		const form = document.getElementById('payment-form');
+
+    // form.addEventListener('submit', async (event) => {
+		//   event.preventDefault();
+		// });
+  }
+
+  async submit() {
+    const {error} = await stripe.confirmPayment({
+			//`Elements` instance that was used to create the Payment Element
+			elements: this.elements,
+			confirmParams: {
+			  return_url: environment.frontUrl + '/thankyou',
+			},
+		  });
+
+		  if (error) {
+			// This point will only be reached if there is an immediate error when
+			// confirming the payment. Show error to your customer (for example, payment
+			// details incomplete)
+			console.log(error);
+		  } else {
+			// Your customer will be redirected to your `return_url`. For some payment
+			// methods like iDEAL, your customer will be redirected to an intermediate
+			// site first to authorize the payment, then redirected to the `return_url`.
+		  }
   }
 
   apply() {
-    if (this.form.valid) {
-      this.dialogRef.close({ type: 'apply', data: this.form.value });
-    } else {
-      this.validate.validateAllFormFields(this.form);
-    }
-
+    this.dialogRef.close({ type: 'apply', data: '' });
   }
 
   cancel() {
