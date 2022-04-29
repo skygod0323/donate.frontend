@@ -45,10 +45,10 @@ export class DonatePageComponent implements OnInit {
     // });
 
     this.accountForm = this._fb.group({
-      firstName: ['Sky', Validators.required],
-      lastName: ['God', Validators.required],
-      email: ['kssalexander323@gmail.com', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
-      phone: ['111', Validators.required],
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")]],
+      phone: ['', Validators.required],
       donorWall: [false],
       donorWallName: [''],
       getMail: [false],
